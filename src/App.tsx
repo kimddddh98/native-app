@@ -12,6 +12,7 @@ import {
   TextInput,
 } from 'react-native';
 
+import Myheader from './layout/MyHeader';
 import {
   Colors,
   DebugInstructions,
@@ -21,6 +22,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import MyButton from './components/MyButton';
 import {commonStyles} from './styles';
+import ShadowBox from './components/ShadowBox';
 export default function App() {
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
@@ -34,9 +36,22 @@ export default function App() {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
+      <Myheader />
+
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         contentContainerStyle={commonStyles.container}>
+        <View style={styles.wrap}>
+          <Text>{count}</Text>
+          <MyButton title="+" onPress={() => setCount(count + 1)} />
+          <MyButton title="-" onPress={() => setCount(count - 1)} />
+        </View>
+        <ShadowBox title={'a'} />
+        <View style={styles.wrap}>
+          <Text>{count}</Text>
+          <MyButton title="+" onPress={() => setCount(count + 1)} />
+          <MyButton title="-" onPress={() => setCount(count - 1)} />
+        </View>
         <View style={styles.wrap}>
           <Text>{count}</Text>
           <MyButton title="+" onPress={() => setCount(count + 1)} />
@@ -73,7 +88,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    height: 'auto',
-    gap: 50,
+    height: 500,
+    gap: 10,
+  },
+  header: {
+    height: 64,
+    backgroundColor: '#030303',
+    paddingHorizontal: 16,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  whiteColor: {
+    color: '#fff',
   },
 });
